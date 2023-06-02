@@ -23,7 +23,7 @@ class MedicationReminder:
 
     def play_reminder_sound(self):
 
-        winsound.Beep(440, 2000)  # Frequency: 440Hz, Duration: 1000ms
+        winsound.Beep(440, 2000)  
 
     def set_medication_reminders(self):
         threads = []
@@ -33,7 +33,7 @@ class MedicationReminder:
             thread.start()
             threads.append(thread)
 
-        # Wait for all threads to complete
+       
         for thread in threads:
             thread.join()
 
@@ -111,10 +111,19 @@ class MedicationReminder:
         self.set_medication_reminders()
 
 current_time = datetime.datetime.now().strftime("%H:%M")
-dum1 =int(current_time[4])+1
-dum2 =int(current_time[4])+2
-c1=current_time[:4]+ str(dum1)
-c2=current_time[:4]+ str(dum2)
+if current_time[4]=='9':
+    dum1=int(current_time[3])+1
+    c1=current_time[:3]+ str(dum1) + "0"
+else:
+    dum1 =int(current_time[4])+1
+    c1=current_time[:4]+ str(dum1)
+
+if current_time[4]=='8':
+    dum2=int(current_time[3])+1
+    c2=current_time[:3]+ str(dum2) + "0"
+else:
+    dum2 =int(current_time[4])+2
+    c2=current_time[:4]+ str(dum2)
 
 
 reminder_system = MedicationReminder()
