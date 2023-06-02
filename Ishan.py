@@ -5,7 +5,7 @@ import threading
 import pandas as pd
 
 class MedicationReminder:
-    def _init_(self):
+    def __init__(self):
         self.reminders = []
 
     def add_reminder(self, reminder_time, medicine_name):
